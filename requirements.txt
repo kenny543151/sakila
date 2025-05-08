@@ -4,3 +4,4 @@ sqlalchemy
 mysql-connector-python
 python-jose[cryptography]
 passlib[bcrypt]
+python-dotenv
