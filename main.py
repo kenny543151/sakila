@@ -10,12 +10,16 @@ from passlib.context import CryptContext
 from typing import List
 import os
 from dotenv import load_dotenv
+from fastapi.staticfiles import StaticFiles
 
 # Load .env variables
 load_dotenv()
 
 # FastAPI app
 app = FastAPI(title="Sakila DVD Rental API")
+
+# Serve static files for favicon and others
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Environment variables
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -93,6 +97,11 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     except JWTError:
         raise credentials_exception
     return username
+
+# Root Endpoint
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the Sakila DVD Rental API"}
 
 # Auth Endpoints
 @app.post("/token", response_model=Token)
