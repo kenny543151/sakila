@@ -6,3 +6,4 @@ python-jose[cryptography]
 passlib[bcrypt]
 python-dotenv
 pip install python-multipart
+jose
