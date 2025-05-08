@@ -5,5 +5,5 @@ mysql-connector-python
 python-jose[cryptography]
 passlib[bcrypt]
 python-dotenv
-pip install python-multipart
+python-multipart
 jose
